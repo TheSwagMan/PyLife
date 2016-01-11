@@ -4,7 +4,7 @@ A Python implementation of the Game of Life
 v1.0
 
 Configuration:
-You just need to have Python version 3.x with tkinter installed (build-in).
+You just need to have Python version 3.x with tkinter installed (built-in).
 
 Operating:
 To run the application, just execute the run.py file in the root directory.
