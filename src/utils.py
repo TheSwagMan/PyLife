@@ -1,4 +1,5 @@
 import random
+import time
 
 def cp_matrix(m):
     r=[]
@@ -10,3 +11,6 @@ def cp_matrix(m):
 
 def bit_random():
     return random.randint(0,1)
+
+def get_date():
+    return time.strftime("%Y-%m-%d_%H-%M-%S")

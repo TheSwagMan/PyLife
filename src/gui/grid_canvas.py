@@ -1,6 +1,7 @@
-import tkinter,shutil,subprocess
+import tkinter,shutil,subprocess,os
 import objects.life_grid as lg
 
+CANVAS_SAVE_DIR="saved_canvas"
 class grid_canvas():
     def __init__(self,parent,size,grid=lg.life_grid((1,1)),color_dead="white",color_alive="black"):
         self.alive_cell_tag="a_cell"
@@ -57,7 +58,9 @@ class grid_canvas():
             cy=cy+self.size[1]/self.grid.size[0]
             
     def save_canvas(self,file_name):
-        self.main_canvas.postscript(file=file_name, colormode='color')
+        if not os.path.isdir(CANVAS_SAVE_DIR):
+            os.mkdir(CANVAS_SAVE_DIR)
+        self.main_canvas.postscript(file=CANVAS_SAVE_DIR+"/"+file_name, colormode='color')
     
     def evolve(self):
         self.grid.evolve()

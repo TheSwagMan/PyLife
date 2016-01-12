@@ -1,4 +1,5 @@
 from threading import Thread
+import utils
 import tkinter
 import gui.grid_canvas as gc
 import objects.life_grid as lg
@@ -54,9 +55,9 @@ class grid_window(Thread):
         self.main_game.init(self.main_canvas,self.main_label,self.time_label)
         self.main_game.start()
         
-        self.game_win.protocol("WM_DELETE_WINDOW", self.close)
-        self.game_win.bind('<Escape>', self.close_callback)
-        
+        self.game_win.protocol("WM_DELETE_WINDOW",self.close)
+        self.game_win.bind('<Escape>',self.close_callback)
+        self.game_win.bind('<Control-s>',self.save)
         self.game_win.mainloop()
         
     def toogle_play(self):
@@ -90,5 +91,7 @@ class grid_window(Thread):
     def less_time(self):
         self.main_game.add_time_inter(-0.1)
     
+    def save(self,event):
+        self.main_canvas.save_canvas("saved_"+utils.get_date())
     def close(self):
         self.game_win.destroy()
