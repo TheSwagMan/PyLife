@@ -1,5 +1,4 @@
 from threading import Thread
-import utils
 import tkinter
 import gui.grid_canvas as gc
 import objects.life_grid as lg
@@ -12,6 +11,7 @@ class grid_window(Thread):
         self.right_area_size=[80,self.win_size[1]]
         self.bottom_arrea_size=[self.win_size[0],80]
         self.canvas_size=[self.win_size[0]-self.right_area_size[0],self.win_size[1]-self.bottom_arrea_size[1]]
+        self.is_closed=False
         
     def run(self):
         self.main_game=mg.main_game()
@@ -55,10 +55,11 @@ class grid_window(Thread):
         self.main_game.init(self.main_canvas,self.main_label,self.time_label)
         self.main_game.start()
         
-        self.game_win.protocol("WM_DELETE_WINDOW",self.close)
-        self.game_win.bind('<Escape>',self.close_callback)
-        self.game_win.bind('<Control-s>',self.save)
+        self.game_win.protocol("WM_DELETE_WINDOW", self.close)
+        self.game_win.bind('<Escape>', self.close_callback)
+        
         self.game_win.mainloop()
+        self.close()
         
     def toogle_play(self):
         if self.main_game.is_playing:
@@ -91,7 +92,8 @@ class grid_window(Thread):
     def less_time(self):
         self.main_game.add_time_inter(-0.1)
     
-    def save(self,event):
-        self.main_canvas.save_canvas("saved_"+utils.get_date())
     def close(self):
-        self.game_win.destroy()
+        if not self.is_closed:
+            self.main_game.close()
+            self.game_win.destroy()
+        self.is_closed=True

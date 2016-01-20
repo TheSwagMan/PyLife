@@ -8,17 +8,21 @@ class main_game(Thread):
         self.iter=0
         self.time_interval=0.2
         self.is_playing=False
+        self.is_closed=False
     
     def run(self):
         self.refresh_iter_disp()
         while True:
-            self.refresh_time_disp()
-            if self.is_playing:
-                self.refresh_iter_disp()
-                self.main_canvas.evolve()
-                self.main_canvas.refresh()
-            time.sleep(self.time_interval)
-
+            if self.is_closed:
+                break
+            else:
+                self.refresh_time_disp()
+                if self.is_playing:
+                    self.refresh_iter_disp()
+                    self.main_canvas.evolve()
+                    self.main_canvas.refresh()
+                time.sleep(self.time_interval)
+    
     def toogle_play(self):
         self.is_playing=not self.is_playing
     
@@ -42,3 +46,6 @@ class main_game(Thread):
         if self.time_interval+v>0.0 and self.time_interval+v<=5.0:
             self.time_interval=round(self.time_interval+v,1)
             self.refresh_time_disp()
+        
+    def close(self):
+        self.is_closed=True
