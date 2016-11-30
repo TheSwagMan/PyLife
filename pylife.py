@@ -1,3 +1,4 @@
+#! /usr/bin/python3
 from gui_utils.adaptor import GuiAdapter
 
 from gui_utils.gui import Gui
