@@ -91,5 +91,6 @@ class grid_window():
     def close(self, *args):
         if not self.is_closed:
             self.callers[3]()
-            self.game_win.event_generate("<<close>>", when="tail")
+            self.game_win.event_generate("<<close>>")
+
         self.is_closed=True

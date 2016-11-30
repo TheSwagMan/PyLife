@@ -2,7 +2,8 @@ from threading import Thread
 import tkinter
 
 class grid_size_input(Thread):
-    def init(self,valid_range=[]):
+    def __init__(self, valid_range=[]):
+        super().__init__()
         self.wwidth=300
         self.wheight=300
         self.is_closed=False
