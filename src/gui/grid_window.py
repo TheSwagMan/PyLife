@@ -92,5 +92,4 @@ class grid_window():
         if not self.is_closed:
             self.callers[3]()
             self.game_win.event_generate("<<close>>")
-
         self.is_closed=True
