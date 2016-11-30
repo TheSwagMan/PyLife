@@ -9,7 +9,7 @@ You just need to have Python with tkinter installed (works better with 3.x).
 Operating:
 To run the application, just execute the run.py file in the root directory.
 
-$ python run.py
+$ python pylife.py
 
 Copyright:
 This work is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-sa/4.0/.
