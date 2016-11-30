@@ -1,9 +1,9 @@
 from threading import Thread
 import time
 
-
 class main_game(Thread):
-    def init(self,canvas,main_label,time_label):
+    def __init__(self, canvas, main_label, time_label):
+        super().__init__()
         self.main_canvas=canvas
         self.main_label=main_label
         self.time_label=time_label
@@ -14,16 +14,13 @@ class main_game(Thread):
     
     def run(self):
         self.refresh_iter_disp()
-        while True:
-            if self.is_closed:
-                break
-            else:
-                self.refresh_time_disp()
-                if self.is_playing:
-                    self.refresh_iter_disp()
-                    self.main_canvas.evolve()
-                    self.main_canvas.refresh()
-                time.sleep(self.time_interval)
+        while not self.is_closed:
+            self.refresh_time_disp()
+            if self.is_playing:
+                self.refresh_iter_disp()
+                self.main_canvas.evolve()
+                self.main_canvas.refresh()
+            time.sleep(self.time_interval)
     
     def toogle_play(self):
         self.is_playing=not self.is_playing
