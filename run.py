@@ -1,9 +1,5 @@
-import sys
-
-sys.path.append('src/')
-
-import gui.grid_size_input as gsi
-import gui.grid_window as gw
+import src.gui.grid_size_input as gsi
+import src.gui.grid_window as gw
 
 v=gsi.grid_size_input()
 v.init([1,50])

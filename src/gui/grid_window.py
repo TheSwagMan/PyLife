@@ -1,8 +1,8 @@
 from threading import Thread
 import tkinter
-import gui.grid_canvas as gc
-import objects.life_grid as lg
-import game.main_game as mg
+import src.gui.grid_canvas as gc
+import src.objects.life_grid as lg
+import src.game.main_game as mg
 
 class grid_window(Thread):
     def init(self,win_size,grid_size):

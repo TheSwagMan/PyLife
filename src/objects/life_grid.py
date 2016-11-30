@@ -1,4 +1,4 @@
-import utils
+import src.utils as utils
 
 class life_grid():
     def __init__(self,size,random=False):

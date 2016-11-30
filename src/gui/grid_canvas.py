@@ -1,5 +1,6 @@
-import tkinter,shutil,subprocess,os
-import objects.life_grid as lg
+import tkinter
+import shutil, subprocess, os
+import src.objects.life_grid as lg
 
 CANVAS_SAVE_DIR="saved_canvas"
 class grid_canvas():

@@ -1,5 +1,7 @@
 from threading import Thread
 import time
+
+
 class main_game(Thread):
     def init(self,canvas,main_label,time_label):
         self.main_canvas=canvas

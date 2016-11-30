@@ -1,6 +1,10 @@
 __author__ = 'R4M80'
 from threading import Thread
-import tkinter
+
+try:
+    import tkinter
+except:
+    import Tkinter
 import time
 
 class winjeuvie(Thread):                                        #   Classe pour la fenetre du jeu implementant le multithreading
